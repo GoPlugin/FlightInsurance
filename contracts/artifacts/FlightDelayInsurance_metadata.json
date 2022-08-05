@@ -1,0 +1,636 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_pli",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "flightId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "eventType",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "flight",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "performedBy",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "performedOn",
+						"type": "uint256"
+					}
+				],
+				"name": "FlightEvents",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "insuranceid",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "eventType",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "passenger",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "performedBy",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "performedOn",
+						"type": "uint256"
+					}
+				],
+				"name": "InsuranceEvents",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "id",
+						"type": "bytes32"
+					}
+				],
+				"name": "PluginCancelled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "id",
+						"type": "bytes32"
+					}
+				],
+				"name": "PluginFulfilled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "id",
+						"type": "bytes32"
+					}
+				],
+				"name": "PluginRequested",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "requestId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "otp",
+						"type": "uint256"
+					}
+				],
+				"name": "RequestPermissionFulfilled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "requester",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "jobId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "requestId",
+						"type": "bytes32"
+					}
+				],
+				"name": "requestCreated",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_passengerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_carrierFlightNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_departureOn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_arrivalOn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_travelday",
+						"type": "uint256"
+					}
+				],
+				"name": "bookInsurance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "claimRequest",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "claims",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "policyid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "passenger",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "carrierFlightNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "departureOn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "arrivalOn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bookedOn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum IFlightStatus.FlightStatus",
+						"name": "flightStatus",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "yearmonthdate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "processed",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "flights",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "flightId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "carrierFlightNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "serviceProviderName",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "serviceProvider",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "registeredOn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "registeredBy",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_requestId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "enum IFlightStatus.FlightStatus",
+						"name": "_flightStatus",
+						"type": "uint8"
+					}
+				],
+				"name": "fulfillClaimInquiry",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "insurances",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "policyid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "passenger",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "carrierFlightNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "departureOn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "arrivalOn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "bookedOn",
+						"type": "uint256"
+					},
+					{
+						"internalType": "enum IFlightStatus.FlightStatus",
+						"name": "flightStatus",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "yearmonthdate",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "processed",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_flightAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_carrierFlightNumber",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_serviceProviderName",
+						"type": "string"
+					}
+				],
+				"name": "registerFlights",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_insuranceid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "_oracleAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "_jobid",
+						"type": "string"
+					}
+				],
+				"name": "submitMyClaim",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/FlightDelayInsurance.sol": "FlightDelayInsurance"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@goplugin/contracts/src/v0.8/Plugin.sol": {
+			"keccak256": "0x3d4f45b99494d19284524a09102e09a1a3fc74d9b0fa27d2861f0957d79e30e1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://76e85c584eb74eb8669fb3773da1c938c584ecec9a6ac29e856c6b2138337978",
+				"dweb:/ipfs/Qmeag6GbPJApYgKmzRokqHyJez7Eaz5AZMhytDjkiDo9Ln"
+			]
+		},
+		"@goplugin/contracts/src/v0.8/PluginClient.sol": {
+			"keccak256": "0x54572ca17cd364505bf62036e4022c4f5a0f224869459ca0e2e85f94d734e53b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7f46d5ac8893c45d9a501002a61bffa773521cf8d50ff21cc5557e9b02e25ce3",
+				"dweb:/ipfs/QmSj2XAvNFS927Ustu4ZA9xec5YNxebjaK9gqYjAad3fQW"
+			]
+		},
+		"@goplugin/contracts/src/v0.8/interfaces/ENSInterface.sol": {
+			"keccak256": "0xd8545d2e73f7aa517543d97e1763d95c11ddd52a5050cf1933047c9f22f10b5a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://de663408f7c1937e46aef8d86e180a2528f31cdcbc43e1682297c20be03af461",
+				"dweb:/ipfs/QmVpFw2fJkaegf6hGRYtjx932KJCs6bAuKvCRoXrhV7GMF"
+			]
+		},
+		"@goplugin/contracts/src/v0.8/interfaces/OperatorInterface.sol": {
+			"keccak256": "0xcb216db11216856f68499495aea5c5e3d3c6998e68ed34eb65576dd7517e8eae",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bcb66491241d9abbc2074a5bbb86518a64b360b848a632c9d8bb9fe6cfe3b75c",
+				"dweb:/ipfs/QmPWxkMewrA49GcJ5cifAhb95XsNWjRNa9i2jrBM5nvgVX"
+			]
+		},
+		"@goplugin/contracts/src/v0.8/interfaces/OracleInterface.sol": {
+			"keccak256": "0x55fb2c156150379d285ab89081ff5add6f37343d7992bd2ec1485a2652af94d7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cd1fc4c0fb89f7de9ec68fdc582950c63d581f3822ef71d9a8fd240a73b37778",
+				"dweb:/ipfs/QmdvboNgXzaQXMaceVQPGwpZHMC5fe9LU9GkippzA8quPJ"
+			]
+		},
+		"@goplugin/contracts/src/v0.8/interfaces/PliTokenInterface.sol": {
+			"keccak256": "0x82c31fff77f022d56bde5ae1b251380644c3496221421245300824b25bc11f6e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ca1f74f75b6986778c3a7c499ba9d430d267cb797b12b93d47a4b4a5f583799",
+				"dweb:/ipfs/QmU9hUjmtAJaJTz1fekwAYVWwWmYufRYXzEW9M5hgE49dR"
+			]
+		},
+		"@goplugin/contracts/src/v0.8/interfaces/PluginRequestInterface.sol": {
+			"keccak256": "0x30e0b2e375a8e3ae9f4f1ca448a30a5670d78685276302aa902b4331947a46d2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bd4a540852961f706b270135c7bf16a2269deab62d4288d9bc762a4fbcf179cc",
+				"dweb:/ipfs/QmQfDAbiU1WNCHxpJdrm89fFnA7RwCMJw81Pq4gU5qQjrx"
+			]
+		},
+		"@goplugin/contracts/src/v0.8/interfaces/PointerInterface.sol": {
+			"keccak256": "0xc3d897e7c93b02e53f21b40accd4a0bd5c38f9780a4f74a7109b70fbfde03b40",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://11166ec1ac48aaf14f5a7053283371341e0418eaced385b7ed7c9140d9f1f1df",
+				"dweb:/ipfs/QmV4bkHEEpeqC6pr3nmmQQURkVKMroucA31YoGcysnByt7"
+			]
+		},
+		"@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol": {
+			"keccak256": "0x16cb401b48de656645a2a98614d0a9ca1e2bd3fc57e79b964f8c15c06b2d086b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://7f6b3a0e1e427421b90f88d825737bc5feab5724ff0d1ff6f28e275255c0b2d7",
+				"dweb:/ipfs/QmViHBvvXStg3qdsVqSAPNKAUgWxBLhuT5EtoDnc2WX5c1"
+			]
+		},
+		"@goplugin/contracts/src/v0.8/vendor/CBORPlugin.sol": {
+			"keccak256": "0xb64a0acf3a0be6f51bc0f8a84c532832ddef56402e926fbf371cd91589eaecf1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1b6959894153d714583ca2212d25afd5a1ca5b348aa07cadf91e88b7de322668",
+				"dweb:/ipfs/QmUb4R5nT2wnvYNWaph9mP4PGM1uYD8YoW1dwYNck5aZSh"
+			]
+		},
+		"@goplugin/contracts/src/v0.8/vendor/ENSResolver.sol": {
+			"keccak256": "0xeed48a6a522c400f024f8725ad931833205cb63cc87285b46c5c0e88ca090352",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c4065aed34d3fae897ac7eb7c5e3af1ba9f458fc31c9f165acae8fa448125ec5",
+				"dweb:/ipfs/Qmejzy7Kdw4mHiv5QqyvA8nUU5SeqH6n6dQoe1VEWZUnsi"
+			]
+		},
+		"CustomTokens/contracts/utils/Counters.sol": {
+			"keccak256": "0xf0018c2440fbe238dd3a8732fa8e17a0f9dce84d31451dc8a32f6d62b349c9f1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://59e1c62884d55b70f3ae5432b44bb3166ad71ae3acd19c57ab6ddc3c87c325ee",
+				"dweb:/ipfs/QmezuXg5GK5oeA4F91EZhozBFekhq5TD966bHPH18cCqhu"
+			]
+		},
+		"contracts/FlightDelayInsurance.sol": {
+			"keccak256": "0xb929475e1fd10fca1f4d17ac17ed12e3be8c57c32276a0c2bc3aa6def41cbb70",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0aebd185f442c1971a36bdc132665ff21943f950a4122c054af0099775d12197",
+				"dweb:/ipfs/QmQTgpWvqBMLYYCvq7M4TaXcdpTA4MoDvDpTBhXcxytj91"
+			]
+		},
+		"contracts/interface/IFlightStatus.sol": {
+			"keccak256": "0x04bab38ed1bba5645d6bcd8964cc91faf75fc54da6233cbe33e9bdadb1cc6200",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c4f85154ecedaafbac69f9d446834d1602031231581c373604bd27e3190b2e59",
+				"dweb:/ipfs/QmUWfmcpL1vkFjYqPDwpjmBmM8bPU991dayCXRbmG2HK7y"
+			]
+		}
+	},
+	"version": 1
+}

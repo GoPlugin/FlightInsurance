@@ -1,0 +1,488 @@
+[
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_pli",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "flightId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "eventType",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "flight",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "performedBy",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "performedOn",
+                "type": "uint256"
+            }
+        ],
+        "name": "FlightEvents",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "insuranceid",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "eventType",
+                "type": "string"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "passenger",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "address",
+                "name": "performedBy",
+                "type": "address"
+            },
+            {
+                "indexed": false,
+                "internalType": "uint256",
+                "name": "performedOn",
+                "type": "uint256"
+            }
+        ],
+        "name": "InsuranceEvents",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "id",
+                "type": "bytes32"
+            }
+        ],
+        "name": "PluginCancelled",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "id",
+                "type": "bytes32"
+            }
+        ],
+        "name": "PluginFulfilled",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "id",
+                "type": "bytes32"
+            }
+        ],
+        "name": "PluginRequested",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "requestId",
+                "type": "bytes32"
+            },
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "otp",
+                "type": "uint256"
+            }
+        ],
+        "name": "RequestPermissionFulfilled",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "address",
+                "name": "requester",
+                "type": "address"
+            },
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "jobId",
+                "type": "bytes32"
+            },
+            {
+                "indexed": true,
+                "internalType": "bytes32",
+                "name": "requestId",
+                "type": "bytes32"
+            }
+        ],
+        "name": "requestCreated",
+        "type": "event"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_passengerAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "_carrierFlightNumber",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_departureOn",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_arrivalOn",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "_travelday",
+                "type": "uint256"
+            }
+        ],
+        "name": "bookInsurance",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "claimRequest",
+        "outputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "",
+                "type": "bytes32"
+            }
+        ],
+        "name": "claims",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "polictyid",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "passenger",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "carrierFlightNumber",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "uint256",
+                "name": "departureOn",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "arrivalOn",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "bookedOn",
+                "type": "uint256"
+            },
+            {
+                "internalType": "enum IFlightStatus.FlightStatus",
+                "name": "flightStatus",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint256",
+                "name": "yearmonthdate",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "processed",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "flights",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "flightId",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "carrierFlightNumber",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "string",
+                "name": "serviceProviderName",
+                "type": "string"
+            },
+            {
+                "internalType": "address",
+                "name": "serviceProvider",
+                "type": "address"
+            },
+            {
+                "internalType": "uint256",
+                "name": "registeredOn",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "registeredBy",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "bytes32",
+                "name": "_requestId",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "enum IFlightStatus.FlightStatus",
+                "name": "_flightStatus",
+                "type": "uint8"
+            }
+        ],
+        "name": "fulfillClaimInquiry",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "name": "insurances",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "polictyid",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "passenger",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "carrierFlightNumber",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "uint256",
+                "name": "departureOn",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "arrivalOn",
+                "type": "uint256"
+            },
+            {
+                "internalType": "uint256",
+                "name": "bookedOn",
+                "type": "uint256"
+            },
+            {
+                "internalType": "enum IFlightStatus.FlightStatus",
+                "name": "flightStatus",
+                "type": "uint8"
+            },
+            {
+                "internalType": "uint256",
+                "name": "yearmonthdate",
+                "type": "uint256"
+            },
+            {
+                "internalType": "bool",
+                "name": "processed",
+                "type": "bool"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+            {
+                "internalType": "address",
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "address",
+                "name": "_flightAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "bytes32",
+                "name": "_carrierFlightNumber",
+                "type": "bytes32"
+            },
+            {
+                "internalType": "string",
+                "name": "_serviceProviderName",
+                "type": "string"
+            }
+        ],
+        "name": "registerFlights",
+        "outputs": [
+            {
+                "internalType": "uint256",
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "uint256",
+                "name": "_insuranceid",
+                "type": "uint256"
+            },
+            {
+                "internalType": "address",
+                "name": "_oracleAddress",
+                "type": "address"
+            },
+            {
+                "internalType": "string",
+                "name": "_jobid",
+                "type": "string"
+            }
+        ],
+        "name": "submitMyClaim",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]
