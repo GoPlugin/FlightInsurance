@@ -3,18 +3,25 @@ pragma solidity ^0.8.4;
 
 interface IFlightStatus {
     enum FlightStatus {
+        SCHEDULED,
+        ACTIVE,
         DELAYED,
         UPCOMING,
         DEPARTURED,
         TRANSIT,
         CANCELLED,
-        ONTIME
+        DIVERTED,
+        ONAIR
+    }
+
+    enum PolicyStatus {
+        ISSUED,
+        CLAIMED
     }
 
     struct FlightMaster {
         uint256 flightId;
-        //bytes32 carrierFlightNumber;
-        string carrierFlightNumber;
+        bytes32 carrierFlightNumber;
         string serviceProviderName;
         address serviceProvider; //Should be metadata hash about the patients
         uint256 registeredOn;
@@ -22,15 +29,29 @@ interface IFlightStatus {
     }
 
     struct FlightInsurance {
-        uint256 policyid;
-        address passenger;
-        //bytes32 carrierFlightNumber;
-        string carrierFlightNumber;
+        bytes policyKey;
+        bytes passengerKey;
+        string flightIcao;
         uint256 departureOn;
         uint256 arrivalOn;
         uint256 bookedOn;
         FlightStatus flightStatus;
-        uint256 yearmonthdate;
         bool processed;
+        bool isExist;
+        PolicyStatus policystatus;
+    }
+
+    struct AirlineDetails {
+        address airlineAddress;
+        bytes airlineKey;
+        string iataSymbol;
+        string airlineName;
+        bool funded;
+    }
+
+    struct PassengerDetails {
+        address passengerAddress;
+        string passengerPnr;
+        bytes airlineKey;
     }
 }
