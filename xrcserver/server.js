@@ -25,23 +25,15 @@ app.post('/api/passengerRegister', async (req, res) => {
   const passengerPnr = req.body.passengerPnr;
   const airlineKey = req.body.airlineKey;
 
-
   console.log("passengerAddress, ", passengerAddress);
   console.log("passengerPnr, ", passengerPnr);
   console.log("airlineKey, ", airlineKey);
-
   
   // // //Defining requestContract
   const requestContract = new xdc3.eth.Contract(requestorABI, requestorcontractAddr);
-  // console.log("requestContract",requestContract)
-  
   const account = xdc3.eth.accounts.privateKeyToAccount(deployed_private_key);
-  // console.log("Account Address is, ", account, account.address);
   const nonce = await xdc3.eth.getTransactionCount(account.address);
   const gasPrice = await xdc3.eth.getGasPrice();
-  // console.log("ACCOUNT",account)
-  // console.log("nonce",nonce)
-  console.log("gasPrice before",gasPrice)
 
   const tx = {
     nonce: nonce,
@@ -67,21 +59,10 @@ app.post('/api/passengerRegister', async (req, res) => {
       console.log("receipt value is",receipt.logs[0].topics[0]);
     });
 
-  // const transaction = xdc3.eth.abi.decodeLog(
-                        
-  //                     )
   const events = await requestContract.getPastEvents("PassengerEvents",{fromBlock:"latest",toBlock:"latest"});
-    //console.log("events",events);
-    // console.log("events",events);
     console.log("events",events[0].returnValues.passengerKey);
-    res.json({patientKey:events[0].returnValues.passengerKey,message:events[0].returnValues.eventType})
-  // console.log("log-0", txt.logs[0]);
-  // var request = txt.logs[0];
-  // console.log("request", request);
-  // const resultset = { requestId: request.id, requestData: request.data.toString("utf-8") };
-  // console.log("resultSet  ,", resultset);
-  // res.send(resultset);
-  // console.log("gaslimit", gasLimit);
+    res.json({passengerKey:events[0].returnValues.passengerKey,message:events[0].returnValues.eventType})
+
 })
 
 app.post('/api/airlineRegister', async (req, res) => {
@@ -99,15 +80,9 @@ app.post('/api/airlineRegister', async (req, res) => {
   
   // // //Defining requestContract
   const requestContract = new xdc3.eth.Contract(requestorABI, requestorcontractAddr);
-  // console.log("requestContract",requestContract)
-  
   const account = xdc3.eth.accounts.privateKeyToAccount(deployed_private_key);
-  // console.log("Account Address is, ", account, account.address);
   const nonce = await xdc3.eth.getTransactionCount(account.address);
   const gasPrice = await xdc3.eth.getGasPrice();
-  // console.log("ACCOUNT",account)
-  // console.log("nonce",nonce)
-  console.log("gasPrice before",gasPrice)
 
   const tx = {
     nonce: nonce,
@@ -140,14 +115,7 @@ app.post('/api/airlineRegister', async (req, res) => {
     //console.log("events",events);
     // console.log("events",events);
     console.log("events",events[0].returnValues.airlineKey);
-    res.json({patientKey:events[0].returnValues.airlineKey,message:events[0].returnValues.evenType})
-  // console.log("log-0", txt.logs[0]);
-  // var request = txt.logs[0];
-  // console.log("request", request);
-  // const resultset = { requestId: request.id, requestData: request.data.toString("utf-8") };
-  // console.log("resultSet  ,", resultset);
-  // res.send(resultset);
-  // console.log("gaslimit", gasLimit);
+    res.json({airlineKey:events[0].returnValues.airlineKey,message:events[0].returnValues.eventType})
 })
 
 app.post('/api/setAirlineStake', async (req, res) => {
@@ -217,7 +185,6 @@ app.post('/api/bookInsurance', async (req, res) => {
   console.log("arrivalTimeStamp, ", arrivalTimeStamp);
 
 
-
   // // //Defining requestContract
   const requestContract = new xdc3.eth.Contract(requestorABI, requestorcontractAddr);
   console.log("Requestor Contract is, ", requestContract);
@@ -250,12 +217,8 @@ app.post('/api/bookInsurance', async (req, res) => {
     });
     const events = await requestContract.getPastEvents("InsuranceEvents",{fromBlock:"latest",toBlock:"latest"});
     //console.log("events",events);
-    console.log("events",events[0].returnValues.policyKey);
-    res.json({patientKey:events[0].returnValues.policyKey,message:events[0].returnValues.eventType});
-  // var request = h.decodeRunRequest(txt.logs[3]);
-  // const resultset = { requestId: request.id, requestData: request.data.toString("utf-8") };
-  // console.log("resultSet  ,", resultset)
-  // res.send(resultset)
+    console.log("events",events[0].returnValues.insuranceId);
+    res.json({patientKey:events[0].returnValues.insuranceId,message:events[0].returnValues.eventType});
 })
 
 app.post('/api/flightInsuranceDetailsCheck', async (req, res) => {
@@ -272,7 +235,8 @@ app.post('/api/flightInsuranceDetailsCheck', async (req, res) => {
      // // //Defining requestContract
      const requestContract = new xdc3.eth.Contract(requestorABI, requestorcontractAddr);
      console.log("Requestor Contract is, ", requestContract);
-     const result = await requestContract.methods.listAccessStatus(policyKey,passengerKey);
+     const result = await requestContract.methods.flightInsuranceDetailsCheck(policyKey,passengerKey).call();
+     console.log("flightInsuranceDetailsCheck, ", result);
 })
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))

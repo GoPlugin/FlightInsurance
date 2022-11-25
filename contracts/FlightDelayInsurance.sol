@@ -150,14 +150,14 @@ contract FlightDelayInsurance is PluginClient, IFlightStatus {
     }
 
     //Passenger Utility
-    function getPassengerKey(address _passengerAddress,string memory _passengerPnr, bytes memory _airlineKey) internal returns(bytes memory) {
+    function getPassengerKey(address _passengerAddress,string memory _passengerPnr, bytes memory _airlineKey) internal pure returns(bytes memory) {
         return extractBytes(abi.encodePacked('FDI-PA-',_passengerAddress,_passengerPnr, _airlineKey),6,11);
     }
     
     function extractBytes (
         bytes memory data, 
         uint8 from, 
-        uint8 n) public returns(bytes memory) {
+        uint8 n) internal pure returns(bytes memory) {
       bytes memory returnValue = new bytes(n);
       for (uint8 i = 0; i < n - from; i++) {
         returnValue[i] = data[i + from]; 
@@ -192,7 +192,7 @@ contract FlightDelayInsurance is PluginClient, IFlightStatus {
     }
 
     //Airlines Utility
-    function getAirlineKey(string memory _iataSymbol, string memory _airlineName) internal returns(bytes memory) {
+    function getAirlineKey(string memory _iataSymbol, string memory _airlineName) internal pure returns(bytes memory) {
         return extractBytes(abi.encodePacked('FDI-AL-',_iataSymbol,_airlineName), 6, 11);
     }
 
@@ -231,12 +231,11 @@ contract FlightDelayInsurance is PluginClient, IFlightStatus {
 
         require(_arrivalTimeStamp > _departureTimeStamp, "ERROR:FDI-BIS-01:ARRIVAL_BEFORE_DEPARTURE_TIME");
         require(block.timestamp < fiveHourTimeStamp, "ERROR:FDI-BIS-02:FLIGHT_DEPARTURE_LESS_THAN_5_HOURS");
-        require(block.timestamp > fiveDayTimeStamp, "ERROR:FDI-BIS-02:FLIGHT_DEPARTURE_LESS_THAN_5_DAYS");
+        // require(block.timestamp > fiveDayTimeStamp, "ERROR:FDI-BIS-02:FLIGHT_DEPARTURE_LESS_THAN_5_DAYS");
         
         bytes memory _policyKey = insuranceKeyGen(_passengerKey,_flightIcao,_airlineKey);
         
         insurances[_policyKey][passenger[_passengerKey].passengerAddress] = FlightInsurance(
-    
             _policyKey,
             _passengerKey,
             _flightIcao,
@@ -261,7 +260,7 @@ contract FlightDelayInsurance is PluginClient, IFlightStatus {
     }
 
     //Insurance utility
-    function insuranceKeyGen(bytes memory _passengerKey,string memory _flightIcao, bytes memory _airlineKey) internal returns(bytes memory) {
+    function insuranceKeyGen(bytes memory _passengerKey,string memory _flightIcao, bytes memory _airlineKey) internal pure returns(bytes memory) {
         return extractBytes(abi.encodePacked('FDI-POLICY-',_passengerKey,_flightIcao,_airlineKey),6,11);
     }
 
@@ -269,12 +268,12 @@ contract FlightDelayInsurance is PluginClient, IFlightStatus {
     //Erro code: SMC
     function submitMyClaim(
         bytes memory _policyKey,
-        bytes memory _passengerKey,
+        //bytes memory _passengerKey,
         // address _oracleAddress,
         // uint256 _jobid,
         uint256 _arrivalTime //Need to be queried with avaiatiostack api about the flight arrival status using flight_icao and departure dateTime
     
-    ) public {
+    ) public view {
         FlightInsurance memory fin = insurances[_policyKey][msg.sender];
         require(insurances[_policyKey][msg.sender].isExist == true, "ERROR:FDI-SMC-01:PPLICY_PASSENGER_KEY_NOT_FOUND");
         require(passenger[fin.passengerKey].passengerAddress != address(0),"ERROR:FDI-SMC-02:ZERO_ADDRESS");
