@@ -1,0 +1,2 @@
+flightDelayCompensation contract: 0x5d569EA75Bb21BA8b580a75E026E9D2c221780F7
+flightDelayCompensationPayment contract: 0xC6831F4d12BFAB920017d57212dD9f4ec82FF154 

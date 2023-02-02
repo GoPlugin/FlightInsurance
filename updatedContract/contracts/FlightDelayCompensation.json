@@ -1,0 +1,246 @@
+[
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "bytes",
+            "name": "passengerKey",
+            "type": "bytes"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "eventType",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "address",
+            "name": "performedBy",
+            "type": "address"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "performedOn",
+            "type": "uint256"
+          }
+        ],
+        "name": "CompensationEvents",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_passengerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "_passengerPnr",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_airlineTag",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_depDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_arrDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_kycHash",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_flightNumber",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_passengerRegNumber",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_compAmt",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum FlightDelayCompensation.compensationStatus",
+            "name": "_cs",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum FlightDelayCompensation.flightStatus",
+            "name": "_fs",
+            "type": "uint8"
+          }
+        ],
+        "name": "delayCompensation",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "_passengerPnr",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_airlineTag",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_depDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_arrDate",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_passengerRegNumber",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum FlightDelayCompensation.flightStatus",
+            "name": "_fs",
+            "type": "uint8"
+          }
+        ],
+        "name": "delayCompensationFlightUpdate",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "_passengerPnr",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_airlineTag",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_depDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_arrDate",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_passengerRegNumber",
+            "type": "uint256"
+          },
+          {
+            "internalType": "enum FlightDelayCompensation.compensationStatus",
+            "name": "_cs",
+            "type": "uint8"
+          }
+        ],
+        "name": "delayCompensationUpdate",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes",
+            "name": "",
+            "type": "bytes"
+          }
+        ],
+        "name": "passenger",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "passengerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "compAmt",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "flightNumber",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "airlineTag",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "passengerPnr",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "depDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "arrDate",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "kycHash",
+            "type": "string"
+          },
+          {
+            "internalType": "enum FlightDelayCompensation.compensationStatus",
+            "name": "compstatus",
+            "type": "uint8"
+          },
+          {
+            "internalType": "enum FlightDelayCompensation.flightStatus",
+            "name": "flightstatus",
+            "type": "uint8"
+          },
+          {
+            "internalType": "bool",
+            "name": "isExist",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]
