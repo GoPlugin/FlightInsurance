@@ -1,0 +1,2471 @@
+{
+  "version": "3.4",
+  "log": [
+    {
+      "@goplugin/contracts/src/v0.8/Plugin.sol:Plugin": {
+        "src": "@goplugin/contracts/src/v0.8/Plugin.sol:11",
+        "version": {
+          "withMetadata": "d49e29c204e0ab6e57f72cc9f89880e22a2f91477ce4edb7afa375bcf72ce82c",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/vendor/CBORPlugin.sol:CBORPlugin",
+          "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:BufferPlugin"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/PluginClient.sol:PluginClient": {
+        "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:16",
+        "version": {
+          "withMetadata": "553254732e5d52c4d04aa7a63de55867ee12cfb1eba503b492794fb01a5a8dce",
+          "withoutMetadata": "dfb8b1ecd97b636e7369dbdc6bb8369e1c9be60042b3cffbcc042684e07bf3c0",
+          "linkedWithoutMetadata": "dfb8b1ecd97b636e7369dbdc6bb8369e1c9be60042b3cffbcc042684e07bf3c0"
+        },
+        "inherit": [],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/Plugin.sol:Plugin"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "state-variable-assignment",
+            "name": "requestCount",
+            "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "ens",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_contract(ENSInterface)879",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:28"
+            },
+            {
+              "label": "ensNode",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bytes32",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:29"
+            },
+            {
+              "label": "pli",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_contract(PliTokenInterface)1095",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:30"
+            },
+            {
+              "label": "oracle",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_contract(OperatorInterface)961",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:31"
+            },
+            {
+              "label": "requestCount",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_uint256",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+            },
+            {
+              "label": "pendingRequests",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_bytes32,t_address)",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:33"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_contract(ENSInterface)879": {
+              "label": "contract ENSInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(OperatorInterface)961": {
+              "label": "contract OperatorInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(PliTokenInterface)1095": {
+              "label": "contract PliTokenInterface",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_bytes32,t_address)": {
+              "label": "mapping(bytes32 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/ENSInterface.sol:ENSInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/ENSInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "setSubnodeOwner(bytes32,bytes32,address)",
+          "setResolver(bytes32,address)",
+          "setOwner(bytes32,address)",
+          "setTTL(bytes32,uint64)",
+          "owner(bytes32)",
+          "resolver(bytes32)",
+          "ttl(bytes32)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/OperatorInterface.sol:OperatorInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/OperatorInterface.sol:7",
+        "inherit": [
+          "@goplugin/contracts/src/v0.8/interfaces/PluginRequestInterface.sol:PluginRequestInterface",
+          "@goplugin/contracts/src/v0.8/interfaces/OracleInterface.sol:OracleInterface"
+        ],
+        "libraries": [],
+        "methods": [
+          "requestOracleData(address,uint256,bytes32,address,bytes4,uint256,uint256,bytes)",
+          "fulfillOracleRequest2(bytes32,uint256,address,bytes4,uint256,bytes)",
+          "ownerTransferAndCall(address,uint256,bytes)",
+          "distributeFunds(address payable[],uint256[])",
+          "getAuthorizedSenders()",
+          "setAuthorizedSenders(address[])",
+          "getForwarder()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/OracleInterface.sol:OracleInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/OracleInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "fulfillOracleRequest(bytes32,uint256,address,bytes4,uint256,bytes32)",
+          "isAuthorizedSender(address)",
+          "withdraw(address,uint256)",
+          "withdrawable()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/PliTokenInterface.sol:PliTokenInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/PliTokenInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "balanceOf(address)",
+          "decimals()",
+          "decreaseApproval(address,uint256)",
+          "increaseApproval(address,uint256)",
+          "name()",
+          "symbol()",
+          "totalSupply()",
+          "transfer(address,uint256)",
+          "transferAndCall(address,uint256,bytes)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/PluginRequestInterface.sol:PluginRequestInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/PluginRequestInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "oracleRequest(address,uint256,bytes32,address,bytes4,uint256,uint256,bytes)",
+          "cancelOracleRequest(bytes32,uint256,bytes4,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/PointerInterface.sol:PointerInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/PointerInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "getAddress()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:BufferPlugin": {
+        "src": "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:12",
+        "version": {
+          "withMetadata": "897546c8d71bc8f39d03b513180fe543ca6bdd6aaba3dd2f20fa4e8eeefb0915",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/vendor/CBORPlugin.sol:CBORPlugin": {
+        "src": "@goplugin/contracts/src/v0.8/vendor/CBORPlugin.sol:6",
+        "version": {
+          "withMetadata": "8da468f2102990af08ce505781c9c5a2e4e354d9bc5454de617d44fcbf58dc66",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:BufferPlugin"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/vendor/ENSResolver.sol:ENSResolver": {
+        "src": "@goplugin/contracts/src/v0.8/vendor/ENSResolver.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "addr(bytes32)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:57",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "de5bf81192cb47e0e3e07f4f5e7c7b1b7511eb5b26b23f795e90aad8d46d7c16",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@openzeppelin/contracts/utils/Counters.sol:Counters": {
+        "src": "@openzeppelin/contracts/utils/Counters.sol:14",
+        "version": {
+          "withMetadata": "91efe66a737e48627aaaa81e461a2a709ea3d80277b08dee9df502d57482c787",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "contracts/FDC.sol:FDCStaking": {
+        "src": "contracts/FDC.sol:7",
+        "version": {
+          "withMetadata": "771c9b9dab90672bbb1f7517f83ef39c1271447279eefcf0e87a507ecd123574",
+          "withoutMetadata": "b568d57cc71df96cd99dab8b308d979b934e8b6659a173ab2279a8093c496c3d",
+          "linkedWithoutMetadata": "b568d57cc71df96cd99dab8b308d979b934e8b6659a173ab2279a8093c496c3d"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable",
+          "@goplugin/contracts/src/v0.8/PluginClient.sol:PluginClient"
+        ],
+        "libraries": [
+          "@openzeppelin/contracts/utils/Counters.sol:Counters"
+        ],
+        "methods": [
+          "initialize(address)",
+          "delayCompensation(string,string,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "ens",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_contract(ENSInterface)879",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:28"
+            },
+            {
+              "label": "ensNode",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bytes32",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:29"
+            },
+            {
+              "label": "pli",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_contract(PliTokenInterface)1095",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:30"
+            },
+            {
+              "label": "oracle",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_contract(OperatorInterface)961",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:31"
+            },
+            {
+              "label": "requestCount",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_uint256",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+            },
+            {
+              "label": "pendingRequests",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_bytes32,t_address)",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:33"
+            },
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "6",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+            },
+            {
+              "label": "policyIds",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_struct(Counter)2552_storage",
+              "contract": "FDCStaking",
+              "src": "contracts/FDC.sol:10"
+            },
+            {
+              "label": "plugin",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_address",
+              "contract": "FDCStaking",
+              "src": "contracts/FDC.sol:12"
+            },
+            {
+              "label": "contractOwner",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_address",
+              "contract": "FDCStaking",
+              "src": "contracts/FDC.sol:13"
+            },
+            {
+              "label": "passengerCompDetails",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_mapping(t_uint256,t_struct(passenger)2651_storage)",
+              "contract": "FDCStaking",
+              "src": "contracts/FDC.sol:31"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_contract(ENSInterface)879": {
+              "label": "contract ENSInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(OperatorInterface)961": {
+              "label": "contract OperatorInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(PliTokenInterface)1095": {
+              "label": "contract PliTokenInterface",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_bytes32,t_address)": {
+              "label": "mapping(bytes32 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(passenger)2651_storage)": {
+              "label": "mapping(uint256 => struct FDCStaking.passenger)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Counter)2552_storage": {
+              "label": "struct Counters.Counter",
+              "members": [
+                {
+                  "label": "_value",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                }
+              ],
+              "numberOfBytes": "32"
+            },
+            "t_struct(passenger)2651_storage": {
+              "label": "struct FDCStaking.passenger",
+              "members": [
+                {
+                  "label": "policyid",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "policyAmount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "signerAddress",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "userId",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "packageId",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "4"
+                }
+              ],
+              "numberOfBytes": "160"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      },
+      "contracts/FDCReward.sol:FDCReward": {
+        "src": "contracts/FDCReward.sol:6",
+        "version": {
+          "withMetadata": "e7561004b81b59b948861268662ee6c480309f80df5ba07b492de921d36ce2fa",
+          "withoutMetadata": "5b2322d1db9f67cd1dad528baa2dc883ef6d7eaf9d63fc4d9a948102919ff55e",
+          "linkedWithoutMetadata": "5b2322d1db9f67cd1dad528baa2dc883ef6d7eaf9d63fc4d9a948102919ff55e"
+        },
+        "inherit": [
+          "@goplugin/contracts/src/v0.8/PluginClient.sol:PluginClient",
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/Plugin.sol:Plugin"
+        ],
+        "methods": [
+          "initialize(address)",
+          "depositPLI(uint256)",
+          "transferContractOwnership(address)",
+          "bulksendPLIReward(address[],uint256[],uint256[])",
+          "sendPLIReward(address,uint256,uint256)",
+          "getContractPLIBalance()",
+          "getUserPaymentDetails(address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+            },
+            {
+              "label": "ens",
+              "offset": 2,
+              "slot": "0",
+              "type": "t_contract(ENSInterface)879",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:28"
+            },
+            {
+              "label": "ensNode",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bytes32",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:29"
+            },
+            {
+              "label": "pli",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_contract(PliTokenInterface)1095",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:30"
+            },
+            {
+              "label": "oracle",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_contract(OperatorInterface)961",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:31"
+            },
+            {
+              "label": "requestCount",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_uint256",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+            },
+            {
+              "label": "pendingRequests",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_bytes32,t_address)",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:33"
+            },
+            {
+              "label": "name",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_string_storage",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:10"
+            },
+            {
+              "label": "plugin",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_address",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:11"
+            },
+            {
+              "label": "contractOwner",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_address",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:12"
+            },
+            {
+              "label": "users",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_array(t_string_storage)dyn_storage",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:14"
+            },
+            {
+              "label": "userToPayment",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:15"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_string_storage)dyn_storage": {
+              "label": "string[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_contract(ENSInterface)879": {
+              "label": "contract ENSInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(OperatorInterface)961": {
+              "label": "contract OperatorInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(PliTokenInterface)1095": {
+              "label": "contract PliTokenInterface",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+              "label": "mapping(address => mapping(uint256 => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_address)": {
+              "label": "mapping(bytes32 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_uint256)": {
+              "label": "mapping(uint256 => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      }
+    },
+    {
+      "@goplugin/contracts/src/v0.8/Plugin.sol:Plugin": {
+        "src": "@goplugin/contracts/src/v0.8/Plugin.sol:11",
+        "version": {
+          "withMetadata": "d49e29c204e0ab6e57f72cc9f89880e22a2f91477ce4edb7afa375bcf72ce82c",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/vendor/CBORPlugin.sol:CBORPlugin",
+          "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:BufferPlugin"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/PluginClient.sol:PluginClient": {
+        "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:16",
+        "version": {
+          "withMetadata": "553254732e5d52c4d04aa7a63de55867ee12cfb1eba503b492794fb01a5a8dce",
+          "withoutMetadata": "dfb8b1ecd97b636e7369dbdc6bb8369e1c9be60042b3cffbcc042684e07bf3c0",
+          "linkedWithoutMetadata": "dfb8b1ecd97b636e7369dbdc6bb8369e1c9be60042b3cffbcc042684e07bf3c0"
+        },
+        "inherit": [],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/Plugin.sol:Plugin"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "state-variable-assignment",
+            "name": "requestCount",
+            "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "ens",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_contract(ENSInterface)879",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:28"
+            },
+            {
+              "label": "ensNode",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bytes32",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:29"
+            },
+            {
+              "label": "pli",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_contract(PliTokenInterface)1095",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:30"
+            },
+            {
+              "label": "oracle",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_contract(OperatorInterface)961",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:31"
+            },
+            {
+              "label": "requestCount",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_uint256",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+            },
+            {
+              "label": "pendingRequests",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_bytes32,t_address)",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:33"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_contract(ENSInterface)879": {
+              "label": "contract ENSInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(OperatorInterface)961": {
+              "label": "contract OperatorInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(PliTokenInterface)1095": {
+              "label": "contract PliTokenInterface",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_bytes32,t_address)": {
+              "label": "mapping(bytes32 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/ENSInterface.sol:ENSInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/ENSInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "setSubnodeOwner(bytes32,bytes32,address)",
+          "setResolver(bytes32,address)",
+          "setOwner(bytes32,address)",
+          "setTTL(bytes32,uint64)",
+          "owner(bytes32)",
+          "resolver(bytes32)",
+          "ttl(bytes32)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/OperatorInterface.sol:OperatorInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/OperatorInterface.sol:7",
+        "inherit": [
+          "@goplugin/contracts/src/v0.8/interfaces/PluginRequestInterface.sol:PluginRequestInterface",
+          "@goplugin/contracts/src/v0.8/interfaces/OracleInterface.sol:OracleInterface"
+        ],
+        "libraries": [],
+        "methods": [
+          "requestOracleData(address,uint256,bytes32,address,bytes4,uint256,uint256,bytes)",
+          "fulfillOracleRequest2(bytes32,uint256,address,bytes4,uint256,bytes)",
+          "ownerTransferAndCall(address,uint256,bytes)",
+          "distributeFunds(address payable[],uint256[])",
+          "getAuthorizedSenders()",
+          "setAuthorizedSenders(address[])",
+          "getForwarder()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/OracleInterface.sol:OracleInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/OracleInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "fulfillOracleRequest(bytes32,uint256,address,bytes4,uint256,bytes32)",
+          "isAuthorizedSender(address)",
+          "withdraw(address,uint256)",
+          "withdrawable()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/PliTokenInterface.sol:PliTokenInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/PliTokenInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "balanceOf(address)",
+          "decimals()",
+          "decreaseApproval(address,uint256)",
+          "increaseApproval(address,uint256)",
+          "name()",
+          "symbol()",
+          "totalSupply()",
+          "transfer(address,uint256)",
+          "transferAndCall(address,uint256,bytes)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/PluginRequestInterface.sol:PluginRequestInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/PluginRequestInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "oracleRequest(address,uint256,bytes32,address,bytes4,uint256,uint256,bytes)",
+          "cancelOracleRequest(bytes32,uint256,bytes4,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/PointerInterface.sol:PointerInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/PointerInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "getAddress()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:BufferPlugin": {
+        "src": "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:12",
+        "version": {
+          "withMetadata": "897546c8d71bc8f39d03b513180fe543ca6bdd6aaba3dd2f20fa4e8eeefb0915",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/vendor/CBORPlugin.sol:CBORPlugin": {
+        "src": "@goplugin/contracts/src/v0.8/vendor/CBORPlugin.sol:6",
+        "version": {
+          "withMetadata": "8da468f2102990af08ce505781c9c5a2e4e354d9bc5454de617d44fcbf58dc66",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:BufferPlugin"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/vendor/ENSResolver.sol:ENSResolver": {
+        "src": "@goplugin/contracts/src/v0.8/vendor/ENSResolver.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "addr(bytes32)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:57",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "de5bf81192cb47e0e3e07f4f5e7c7b1b7511eb5b26b23f795e90aad8d46d7c16",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@openzeppelin/contracts/utils/Counters.sol:Counters": {
+        "src": "@openzeppelin/contracts/utils/Counters.sol:14",
+        "version": {
+          "withMetadata": "91efe66a737e48627aaaa81e461a2a709ea3d80277b08dee9df502d57482c787",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "contracts/FDC.sol:FDC": {
+        "src": "contracts/FDC.sol:7",
+        "version": {
+          "withMetadata": "e0b136298286a5e39373df14c0642e89e8d203c258e3db6c0fc13d83d81cce3f",
+          "withoutMetadata": "b568d57cc71df96cd99dab8b308d979b934e8b6659a173ab2279a8093c496c3d",
+          "linkedWithoutMetadata": "b568d57cc71df96cd99dab8b308d979b934e8b6659a173ab2279a8093c496c3d"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable",
+          "@goplugin/contracts/src/v0.8/PluginClient.sol:PluginClient"
+        ],
+        "libraries": [
+          "@openzeppelin/contracts/utils/Counters.sol:Counters"
+        ],
+        "methods": [
+          "initialize(address)",
+          "delayCompensation(string,string,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "ens",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_contract(ENSInterface)879",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:28"
+            },
+            {
+              "label": "ensNode",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bytes32",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:29"
+            },
+            {
+              "label": "pli",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_contract(PliTokenInterface)1095",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:30"
+            },
+            {
+              "label": "oracle",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_contract(OperatorInterface)961",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:31"
+            },
+            {
+              "label": "requestCount",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_uint256",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+            },
+            {
+              "label": "pendingRequests",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_bytes32,t_address)",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:33"
+            },
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "6",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+            },
+            {
+              "label": "policyIds",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_struct(Counter)2552_storage",
+              "contract": "FDC",
+              "src": "contracts/FDC.sol:10"
+            },
+            {
+              "label": "plugin",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_address",
+              "contract": "FDC",
+              "src": "contracts/FDC.sol:12"
+            },
+            {
+              "label": "contractOwner",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_address",
+              "contract": "FDC",
+              "src": "contracts/FDC.sol:13"
+            },
+            {
+              "label": "passengerCompDetails",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_mapping(t_uint256,t_struct(passenger)2651_storage)",
+              "contract": "FDC",
+              "src": "contracts/FDC.sol:31"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_contract(ENSInterface)879": {
+              "label": "contract ENSInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(OperatorInterface)961": {
+              "label": "contract OperatorInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(PliTokenInterface)1095": {
+              "label": "contract PliTokenInterface",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_bytes32,t_address)": {
+              "label": "mapping(bytes32 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(passenger)2651_storage)": {
+              "label": "mapping(uint256 => struct FDC.passenger)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Counter)2552_storage": {
+              "label": "struct Counters.Counter",
+              "members": [
+                {
+                  "label": "_value",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                }
+              ],
+              "numberOfBytes": "32"
+            },
+            "t_struct(passenger)2651_storage": {
+              "label": "struct FDC.passenger",
+              "members": [
+                {
+                  "label": "policyid",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "policyAmount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "signerAddress",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "userId",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "packageId",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "4"
+                }
+              ],
+              "numberOfBytes": "160"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      },
+      "contracts/FDCReward.sol:FDCReward": {
+        "src": "contracts/FDCReward.sol:6",
+        "version": {
+          "withMetadata": "e7561004b81b59b948861268662ee6c480309f80df5ba07b492de921d36ce2fa",
+          "withoutMetadata": "5b2322d1db9f67cd1dad528baa2dc883ef6d7eaf9d63fc4d9a948102919ff55e",
+          "linkedWithoutMetadata": "5b2322d1db9f67cd1dad528baa2dc883ef6d7eaf9d63fc4d9a948102919ff55e"
+        },
+        "inherit": [
+          "@goplugin/contracts/src/v0.8/PluginClient.sol:PluginClient",
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable"
+        ],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/Plugin.sol:Plugin"
+        ],
+        "methods": [
+          "initialize(address)",
+          "depositPLI(uint256)",
+          "transferContractOwnership(address)",
+          "bulksendPLIReward(address[],uint256[],uint256[])",
+          "sendPLIReward(address,uint256,uint256)",
+          "getContractPLIBalance()",
+          "getUserPaymentDetails(address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+            },
+            {
+              "label": "ens",
+              "offset": 2,
+              "slot": "0",
+              "type": "t_contract(ENSInterface)879",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:28"
+            },
+            {
+              "label": "ensNode",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bytes32",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:29"
+            },
+            {
+              "label": "pli",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_contract(PliTokenInterface)1095",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:30"
+            },
+            {
+              "label": "oracle",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_contract(OperatorInterface)961",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:31"
+            },
+            {
+              "label": "requestCount",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_uint256",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+            },
+            {
+              "label": "pendingRequests",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_bytes32,t_address)",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:33"
+            },
+            {
+              "label": "name",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_string_storage",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:10"
+            },
+            {
+              "label": "plugin",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_address",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:11"
+            },
+            {
+              "label": "contractOwner",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_address",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:12"
+            },
+            {
+              "label": "users",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_array(t_string_storage)dyn_storage",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:14"
+            },
+            {
+              "label": "userToPayment",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:15"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_string_storage)dyn_storage": {
+              "label": "string[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_contract(ENSInterface)879": {
+              "label": "contract ENSInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(OperatorInterface)961": {
+              "label": "contract OperatorInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(PliTokenInterface)1095": {
+              "label": "contract PliTokenInterface",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+              "label": "mapping(address => mapping(uint256 => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_address)": {
+              "label": "mapping(bytes32 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_uint256)": {
+              "label": "mapping(uint256 => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      }
+    },
+    {
+      "contracts/interface/IFlightStatus.sol:IFlightStatus": {
+        "src": "contracts/interface/IFlightStatus.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      }
+    },
+    {
+      "@goplugin/contracts/src/v0.8/Plugin.sol:Plugin": {
+        "src": "@goplugin/contracts/src/v0.8/Plugin.sol:11",
+        "version": {
+          "withMetadata": "d49e29c204e0ab6e57f72cc9f89880e22a2f91477ce4edb7afa375bcf72ce82c",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/vendor/CBORPlugin.sol:CBORPlugin",
+          "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:BufferPlugin"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/PluginClient.sol:PluginClient": {
+        "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:16",
+        "version": {
+          "withMetadata": "553254732e5d52c4d04aa7a63de55867ee12cfb1eba503b492794fb01a5a8dce",
+          "withoutMetadata": "dfb8b1ecd97b636e7369dbdc6bb8369e1c9be60042b3cffbcc042684e07bf3c0",
+          "linkedWithoutMetadata": "dfb8b1ecd97b636e7369dbdc6bb8369e1c9be60042b3cffbcc042684e07bf3c0"
+        },
+        "inherit": [],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/Plugin.sol:Plugin"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "state-variable-assignment",
+            "name": "requestCount",
+            "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "ens",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_contract(ENSInterface)879",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:28"
+            },
+            {
+              "label": "ensNode",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bytes32",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:29"
+            },
+            {
+              "label": "pli",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_contract(PliTokenInterface)1095",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:30"
+            },
+            {
+              "label": "oracle",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_contract(OperatorInterface)961",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:31"
+            },
+            {
+              "label": "requestCount",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_uint256",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+            },
+            {
+              "label": "pendingRequests",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_bytes32,t_address)",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:33"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_contract(ENSInterface)879": {
+              "label": "contract ENSInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(OperatorInterface)961": {
+              "label": "contract OperatorInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(PliTokenInterface)1095": {
+              "label": "contract PliTokenInterface",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_bytes32,t_address)": {
+              "label": "mapping(bytes32 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/ENSInterface.sol:ENSInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/ENSInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "setSubnodeOwner(bytes32,bytes32,address)",
+          "setResolver(bytes32,address)",
+          "setOwner(bytes32,address)",
+          "setTTL(bytes32,uint64)",
+          "owner(bytes32)",
+          "resolver(bytes32)",
+          "ttl(bytes32)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/OperatorInterface.sol:OperatorInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/OperatorInterface.sol:7",
+        "inherit": [
+          "@goplugin/contracts/src/v0.8/interfaces/PluginRequestInterface.sol:PluginRequestInterface",
+          "@goplugin/contracts/src/v0.8/interfaces/OracleInterface.sol:OracleInterface"
+        ],
+        "libraries": [],
+        "methods": [
+          "requestOracleData(address,uint256,bytes32,address,bytes4,uint256,uint256,bytes)",
+          "fulfillOracleRequest2(bytes32,uint256,address,bytes4,uint256,bytes)",
+          "ownerTransferAndCall(address,uint256,bytes)",
+          "distributeFunds(address payable[],uint256[])",
+          "getAuthorizedSenders()",
+          "setAuthorizedSenders(address[])",
+          "getForwarder()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/OracleInterface.sol:OracleInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/OracleInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "fulfillOracleRequest(bytes32,uint256,address,bytes4,uint256,bytes32)",
+          "isAuthorizedSender(address)",
+          "withdraw(address,uint256)",
+          "withdrawable()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/PliTokenInterface.sol:PliTokenInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/PliTokenInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "balanceOf(address)",
+          "decimals()",
+          "decreaseApproval(address,uint256)",
+          "increaseApproval(address,uint256)",
+          "name()",
+          "symbol()",
+          "totalSupply()",
+          "transfer(address,uint256)",
+          "transferAndCall(address,uint256,bytes)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/PluginRequestInterface.sol:PluginRequestInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/PluginRequestInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "oracleRequest(address,uint256,bytes32,address,bytes4,uint256,uint256,bytes)",
+          "cancelOracleRequest(bytes32,uint256,bytes4,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/interfaces/PointerInterface.sol:PointerInterface": {
+        "src": "@goplugin/contracts/src/v0.8/interfaces/PointerInterface.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "getAddress()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:BufferPlugin": {
+        "src": "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:12",
+        "version": {
+          "withMetadata": "897546c8d71bc8f39d03b513180fe543ca6bdd6aaba3dd2f20fa4e8eeefb0915",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/vendor/CBORPlugin.sol:CBORPlugin": {
+        "src": "@goplugin/contracts/src/v0.8/vendor/CBORPlugin.sol:6",
+        "version": {
+          "withMetadata": "8da468f2102990af08ce505781c9c5a2e4e354d9bc5454de617d44fcbf58dc66",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [
+          "@goplugin/contracts/src/v0.8/vendor/BufferPlugin.sol:BufferPlugin"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@goplugin/contracts/src/v0.8/vendor/ENSResolver.sol:ENSResolver": {
+        "src": "@goplugin/contracts/src/v0.8/vendor/ENSResolver.sol:4",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "addr(bytes32)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable": {
+        "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:57",
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:AddressUpgradeable": {
+        "src": "@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol:9",
+        "version": {
+          "withMetadata": "de5bf81192cb47e0e3e07f4f5e7c7b1b7511eb5b26b23f795e90aad8d46d7c16",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "@openzeppelin/contracts/utils/Counters.sol:Counters": {
+        "src": "@openzeppelin/contracts/utils/Counters.sol:14",
+        "version": {
+          "withMetadata": "91efe66a737e48627aaaa81e461a2a709ea3d80277b08dee9df502d57482c787",
+          "withoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db",
+          "linkedWithoutMetadata": "a64c6cf9c6ba9368f5132c93a0196b3204a7963dbb4dd05dfddb4ab23126b8db"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false
+        },
+        "solcVersion": "0.8.4"
+      },
+      "contracts/FDC.sol:FDCStaking": {
+        "src": "contracts/FDC.sol:7",
+        "version": {
+          "withMetadata": "771c9b9dab90672bbb1f7517f83ef39c1271447279eefcf0e87a507ecd123574",
+          "withoutMetadata": "b568d57cc71df96cd99dab8b308d979b934e8b6659a173ab2279a8093c496c3d",
+          "linkedWithoutMetadata": "b568d57cc71df96cd99dab8b308d979b934e8b6659a173ab2279a8093c496c3d"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable",
+          "@goplugin/contracts/src/v0.8/PluginClient.sol:PluginClient"
+        ],
+        "libraries": [
+          "@openzeppelin/contracts/utils/Counters.sol:Counters"
+        ],
+        "methods": [
+          "initialize(address)",
+          "delayCompensation(string,string,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "ens",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_contract(ENSInterface)879",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:28"
+            },
+            {
+              "label": "ensNode",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bytes32",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:29"
+            },
+            {
+              "label": "pli",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_contract(PliTokenInterface)1095",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:30"
+            },
+            {
+              "label": "oracle",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_contract(OperatorInterface)961",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:31"
+            },
+            {
+              "label": "requestCount",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_uint256",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+            },
+            {
+              "label": "pendingRequests",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_bytes32,t_address)",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:33"
+            },
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "6",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+            },
+            {
+              "label": "policyIds",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_struct(Counter)2552_storage",
+              "contract": "FDCStaking",
+              "src": "contracts/FDC.sol:10"
+            },
+            {
+              "label": "plugin",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_address",
+              "contract": "FDCStaking",
+              "src": "contracts/FDC.sol:12"
+            },
+            {
+              "label": "contractOwner",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_address",
+              "contract": "FDCStaking",
+              "src": "contracts/FDC.sol:13"
+            },
+            {
+              "label": "passengerCompDetails",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_mapping(t_uint256,t_struct(passenger)2651_storage)",
+              "contract": "FDCStaking",
+              "src": "contracts/FDC.sol:31"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_contract(ENSInterface)879": {
+              "label": "contract ENSInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(OperatorInterface)961": {
+              "label": "contract OperatorInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(PliTokenInterface)1095": {
+              "label": "contract PliTokenInterface",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_bytes32,t_address)": {
+              "label": "mapping(bytes32 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(passenger)2651_storage)": {
+              "label": "mapping(uint256 => struct FDCStaking.passenger)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Counter)2552_storage": {
+              "label": "struct Counters.Counter",
+              "members": [
+                {
+                  "label": "_value",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                }
+              ],
+              "numberOfBytes": "32"
+            },
+            "t_struct(passenger)2651_storage": {
+              "label": "struct FDCStaking.passenger",
+              "members": [
+                {
+                  "label": "policyid",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "policyAmount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "signerAddress",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "userId",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "packageId",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "4"
+                }
+              ],
+              "numberOfBytes": "160"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      },
+      "contracts/FDCReward.sol:FDCReward": {
+        "src": "contracts/FDCReward.sol:6",
+        "version": {
+          "withMetadata": "0d83ae46b334ca6f8cf1513b6689c79d1d2207cc28c5b482a5b14d3df955fdf3",
+          "withoutMetadata": "0fc9230b4532a4324833993ad1219d9cf939434ac29e1d1d089b8ca6b0134b45",
+          "linkedWithoutMetadata": "0fc9230b4532a4324833993ad1219d9cf939434ac29e1d1d089b8ca6b0134b45"
+        },
+        "inherit": [
+          "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:Initializable",
+          "@goplugin/contracts/src/v0.8/PluginClient.sol:PluginClient"
+        ],
+        "libraries": [],
+        "methods": [
+          "initialize(address)",
+          "depositPLI(uint256)",
+          "transferContractOwnership(address)",
+          "bulksendPLIReward(address[],uint256[],uint256[])",
+          "sendPLIReward(address,uint256,uint256)",
+          "getContractPLIBalance()",
+          "getUserPaymentDetails(address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "ens",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_contract(ENSInterface)879",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:28"
+            },
+            {
+              "label": "ensNode",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bytes32",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:29"
+            },
+            {
+              "label": "pli",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_contract(PliTokenInterface)1095",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:30"
+            },
+            {
+              "label": "oracle",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_contract(OperatorInterface)961",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:31"
+            },
+            {
+              "label": "requestCount",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_uint256",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:32"
+            },
+            {
+              "label": "pendingRequests",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_bytes32,t_address)",
+              "contract": "PluginClient",
+              "src": "@goplugin/contracts/src/v0.8/PluginClient.sol:33"
+            },
+            {
+              "label": "_initialized",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_uint8",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+              "retypedFrom": "bool"
+            },
+            {
+              "label": "_initializing",
+              "offset": 1,
+              "slot": "6",
+              "type": "t_bool",
+              "contract": "Initializable",
+              "src": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+            },
+            {
+              "label": "name",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_string_storage",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:9"
+            },
+            {
+              "label": "plugin",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_address",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:10"
+            },
+            {
+              "label": "contractOwner",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_address",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:11"
+            },
+            {
+              "label": "users",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_array(t_string_storage)dyn_storage",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:13"
+            },
+            {
+              "label": "userToPayment",
+              "offset": 0,
+              "slot": "11",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+              "contract": "FDCReward",
+              "src": "contracts/FDCReward.sol:14"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_string_storage)dyn_storage": {
+              "label": "string[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_contract(ENSInterface)879": {
+              "label": "contract ENSInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(OperatorInterface)961": {
+              "label": "contract OperatorInterface",
+              "numberOfBytes": "20"
+            },
+            "t_contract(PliTokenInterface)1095": {
+              "label": "contract PliTokenInterface",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+              "label": "mapping(address => mapping(uint256 => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_bytes32,t_address)": {
+              "label": "mapping(bytes32 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_uint256)": {
+              "label": "mapping(uint256 => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            },
+            "t_uint8": {
+              "label": "uint8",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true
+        },
+        "solcVersion": "0.8.4"
+      }
+    }
+  ]
+}

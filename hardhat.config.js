@@ -2,6 +2,7 @@ require('dotenv').config();
 
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
+require('@openzeppelin/hardhat-upgrades');
 
 task("accounts", "Prints the list of accounts", async () => {
   const accounts = await ethers.getSigners();
@@ -28,13 +29,13 @@ module.exports = {
     local: {
       url: 'http://localhost:8545'
     },
-    xdai: {
-      url: 'https://dai.poa.network',
+    mainnet: {
+      url: 'https://erpc.xinfin.network',
       accounts: [process.env.PRIVATE_KEY],
     },
-    xdcapothem: {
-      url: 'https://rpc.apothem.network',
-      accounts: [process.env.XDCPRIVATE_KEY],
+    apothem: {
+      url: 'https://erpc.apothem.network',
+      accounts: [process.env.PRIVATE_KEY],
     },
     mumbai: {
       url: 'https://rpc-mumbai.maticvigil.com/',

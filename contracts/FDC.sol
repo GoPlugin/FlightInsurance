@@ -1,9 +1,8 @@
-//SPDX-License-Identifier: MIT
-pragma solidity ^0.8.3;
+pragma solidity ^0.4.24;
 import "@goplugin/contracts/src/v0.8/PluginClient.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract FDCStaking is PluginClient {
+contract FDC is PluginClient {
     using Counters for Counters.Counter;
     //Map the tokenIDCounter to counters
     Counters.Counter private policyIds;
@@ -20,8 +19,7 @@ contract FDCStaking is PluginClient {
         string packageId;
     }
 
-    constructor(address _pli)
-    {
+    constructor(address _pli){
         setPluginToken(_pli);
         contractOwner = msg.sender;
         plugin = _pli;
@@ -37,12 +35,12 @@ contract FDCStaking is PluginClient {
         uint256 premiumAmount
     );
 
-
-    function delayCompensation(string memory _userId, string memory _packageId, address _signerAddress, uint256 _premiumAmount)
-        public
-        returns (uint256 _policyId, bool _response)
-    {
-
+    function delayCompensation(
+        string memory _userId,
+        string memory _packageId,
+        address _signerAddress,
+        uint256 _premiumAmount
+    ) public returns (uint256 _policyId, bool _response) {
         PliTokenInterface pli = PliTokenInterface(pluginTokenAddress());
 
         require(
@@ -61,9 +59,9 @@ contract FDCStaking is PluginClient {
             _premiumAmount,
             _signerAddress,
             _userId,
-            _packageId  
+            _packageId
         );
-        
+
         emit CompensationPremiumPaid(
             "PLI staked for Compensation",
             _policyId,
@@ -72,5 +70,4 @@ contract FDCStaking is PluginClient {
         );
         return (_policyId, true);
     }
-
 }

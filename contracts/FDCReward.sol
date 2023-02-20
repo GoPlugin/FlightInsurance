@@ -1,135 +1,117 @@
-//SPDX-License-Identifier: MIT
-pragma solidity ^0.8.3;
-import "@goplugin/contracts/src/v0.8/PluginClient.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
+pragma solidity ^0.4.24;
+import "@goplugin/contracts/src/v0.4/PluginClient.sol";
 
-contract FDCStaking is PluginClient {
-    using Counters for Counters.Counter;
-    //Map the tokenIDCounter to counters
-    Counters.Counter private policyIds;
+contract FDCReward is PluginClient {
+    //Operator
 
+    string public name;
     address public plugin;
     address public contractOwner;
 
-    //Staker Details - Policy Buyers
-    struct Stakers {
-        uint256 policyid;
-        address buyer;
-        uint256 policyAmount;
-        string userId;
-        bool isPaid;
-        bool isActive;
-        bool isClaimed;
-    }
+    string[] public users;
+    mapping(address => mapping(uint256 => uint256)) private userToPayment;
 
-    constructor(address _pli)
-    {
+    constructor(address _pli) {
+        name = "Flight Delay Compensation";
         setPluginToken(_pli);
         contractOwner = msg.sender;
-        plugin = _pli;
-        policyIds.increment();
     }
 
-    mapping(uint256 => Stakers) public policyDetails;
-    mapping(uint256 => bool) public policyClaimStatus;
-    mapping(address => Stakers[]) public purchaseDetails;
+    event OwnershipTransferred(address _owner, address _newOwner);
 
-    event PolicyPremiumPaid(
+    event PaymentToUser(
         string return_msg,
-        uint256 policyId,
-        string userId,
-        uint256 premiumAmount
+        address _to,
+        uint256 _tokens,
+        uint256 _date
     );
 
-    event WithdrawPLI(string return_msg, address _address, uint256 _tokens);
-    event StatusChecker(uint256 _policyId, bool status);
-
-    function _onlyAuthorized() internal view {
-        require(
-            msg.sender == contractOwner,
-            "Only FractionalNFT can perform this operation"
-        );
-    }
-
-    modifier onlyAuthorized() {
-        _onlyAuthorized();
+    modifier isOwner(address _address) {
+        require(_address == contractOwner, "Sender is not the owner");
         _;
     }
 
-    function withdrawPLIFromStakingFarm(uint256 _amount) public onlyAuthorized {
+    //function to accept PLI by Contract
+    function depositPLI(uint256 _amount) public {
+        require(_amount > 0, "Deposit Amount must be greater than 0");
+        //Transfer PLI token from msg.sender to this contract
         PliTokenInterface pli = PliTokenInterface(pluginTokenAddress());
-        pli.transfer(msg.sender, _amount);
-        emit WithdrawPLI(
-            "PLI tokens withdrawn from Contract",
-            msg.sender,
-            _amount
-        );
+        pli.transferFrom(msg.sender, address(this), _amount);
     }
 
-    function buyPolicy(string memory _userId, uint256 _premiumAmount)
+    //To Transfer the ownership of contract
+    function transferContractOwnership(address _newOwneraddress)
         public
-        returns (uint256 _policyId, bool _response)
+        isOwner(msg.sender)
     {
-        PliTokenInterface pli = PliTokenInterface(pluginTokenAddress());
-
-        require(
-            pli.balanceOf(msg.sender) > _premiumAmount,
-            "No sufficient balance to Pay premium"
-        );
-
-        //Policy ID will be trackedin Blockchain;
-        uint256 _policyId = policyIds.current();
-        policyIds.increment();
-
-        pli.transferFrom(msg.sender, address(this), _premiumAmount);
-
-        policyDetails[_policyId] = Stakers(
-            _policyId,
-            msg.sender,
-            _premiumAmount,
-            _userId,
-            true,
-            true,
-            false
-        );
-
-        purchaseDetails[msg.sender].push(policyDetails[_policyId]);
-
-        emit PolicyPremiumPaid(
-            "Premium paid for Policy",
-            _policyId,
-            _userId,
-            _premiumAmount
-        );
-        return (_policyId, true);
+        _transferOwner(_newOwneraddress);
     }
 
-    function getbalanceOfUser() public view returns (uint256 _temp) {
-        PliTokenInterface pli = PliTokenInterface(pluginTokenAddress());
-        return pli.balanceOf(msg.sender);
+    //To Transfer the ownership of contract (Internal function)
+    function _transferOwner(address _newOwneraddress) internal {
+        require(_newOwneraddress != address(0));
+        emit OwnershipTransferred(contractOwner, _newOwneraddress);
+        contractOwner = _newOwneraddress;
     }
 
-    function checkContractPLIBalance() public view returns (uint256 _balance) {
+    //Send PLI token reward to beneficiary -
+    //Bulk Transfer it can handle 255 Txn at a time
+    function bulksendPLIReward(
+        address[] memory _to,
+        uint256[] memory _values,
+        uint256[] memory _dateno
+    ) public isOwner(msg.sender) returns (bool) {
+        require(_to.length == _values.length);
+        require(_to.length <= 255);
+        PliTokenInterface pli = PliTokenInterface(pluginTokenAddress());
+        uint256 _totalAmount = pli.balanceOf(address(this));
+        for (uint256 i = 0; i < _to.length; i++) {
+            if (_totalAmount >= _values[i]) {
+                //PliTokenInterface pli = PliTokenInterface(pluginTokenAddress());
+                pli.transfer(_to[i], _values[i]);
+                userToPayment[_to[i]][_dateno[i]] = _values[i];
+                emit PaymentToUser(
+                    "Payment made to user",
+                    _to[i],
+                    _values[i],
+                    _dateno[i]
+                );
+                //_totalAmount = _totalAmount.sub(_values[i]);
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    //Send PLI token reward to beneficiary
+    function sendPLIReward(
+        address _to,
+        uint256 _values,
+        uint256 _dateno
+    ) public {
+        require(_values > 0, "Reward must be greater than 0");
+        PliTokenInterface pli = PliTokenInterface(pluginTokenAddress());
+        pli.transfer(_to, _values);
+        userToPayment[_to][_dateno] = _values;
+    }
+
+    //Function to return total PLI balance available in the contract
+    function getContractPLIBalance()
+        public
+        view
+        returns (uint256 _pliInContract)
+    {
         PliTokenInterface pli = PliTokenInterface(pluginTokenAddress());
         return pli.balanceOf(address(this));
     }
 
-    function updateClaim(uint256 _policyId)
-        external
-        returns (bool)
+    //Function to get total PLI sent to an user
+    function getUserPaymentDetails(address _userAddress, uint256 _date)
+        public
+        view
+        returns (uint256 _tokens)
     {
-        policyClaimStatus[_policyId] = true;
-        return true;
-    }
-
-    function checkClaim(uint256 _policyId)
-        public view
-        returns (bool)
-    {
-        return policyClaimStatus[_policyId];
-    }
-
-    function getMyPolicies() public returns (Stakers[] memory) {
-        return purchaseDetails[msg.sender];
+        return userToPayment[_userAddress][_date];
     }
 }
