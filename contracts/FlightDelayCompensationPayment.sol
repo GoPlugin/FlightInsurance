@@ -1,6 +1,7 @@
-pragma solidity ^0.4.24;
+//SPDX-License-Identifier: MIT
+pragma solidity 0.8.4;
 
-import "@goplugin/contracts/src/v0.4/PluginClient.sol";
+import "@goplugin/contracts/src/v0.8/PluginClient.sol";
 
 contract flightDelayCompensationPayment is PluginClient {
     //Operator
