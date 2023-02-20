@@ -1,6 +1,6 @@
-pragma solidity ^0.4.24;
-import "@goplugin/contracts/src/v0.8/PluginClient.sol";
+pragma solidity ^0.8.4;
 import "@openzeppelin/contracts/utils/Counters.sol";
+import "@goplugin/contracts/src/v0.8/PluginClient.sol";
 
 contract FDC is PluginClient {
     using Counters for Counters.Counter;

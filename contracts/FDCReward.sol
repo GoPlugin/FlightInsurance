@@ -1,5 +1,5 @@
-pragma solidity ^0.4.24;
-import "@goplugin/contracts/src/v0.4/PluginClient.sol";
+pragma solidity ^0.8.4;
+import "@goplugin/contracts/src/v0.8/PluginClient.sol";
 
 contract FDCReward is PluginClient {
     //Operator
