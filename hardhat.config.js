@@ -16,7 +16,7 @@ console.log("ashdogahsdgsd", process.env.PRIVATE_KEY)
  */
 module.exports = {
   solidity: {
-    version: "0.4.24",
+    version: "0.8.4",
     settings: {
       optimizer: {
         enabled: true,
@@ -34,7 +34,7 @@ module.exports = {
     },
     xdcapothem: {
       url: 'https://rpc.apothem.network',
-      accounts: [process.env.PRIVATE_KEY],
+      accounts: [process.env.XDCPRIVATE_KEY],
     },
     mumbai: {
       url: 'https://rpc-mumbai.maticvigil.com/',
