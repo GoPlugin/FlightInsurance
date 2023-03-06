@@ -1,0 +1,251 @@
+[
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_pli",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "return_msg",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "policyId",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "userId",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "premiumAmount",
+            "type": "uint256"
+          }
+        ],
+        "name": "CompensationPremiumPaid",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "_userId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_packageId",
+            "type": "string"
+          },
+          {
+            "internalType": "address",
+            "name": "_signerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_premiumAmount",
+            "type": "uint256"
+          }
+        ],
+        "name": "delayCompensation",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "_policyId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bool",
+            "name": "_response",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "previousOwner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "newOwner",
+            "type": "address"
+          }
+        ],
+        "name": "OwnershipTransferred",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "id",
+            "type": "bytes32"
+          }
+        ],
+        "name": "PluginCancelled",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "id",
+            "type": "bytes32"
+          }
+        ],
+        "name": "PluginFulfilled",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "bytes32",
+            "name": "id",
+            "type": "bytes32"
+          }
+        ],
+        "name": "PluginRequested",
+        "type": "event"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_newOwneraddress",
+            "type": "address"
+          }
+        ],
+        "name": "transferContractOwnership",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "internalType": "address",
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "indexed": true,
+            "internalType": "uint256",
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          }
+        ],
+        "name": "withdrawnPli",
+        "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "withdrawPli",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "passengerCompDetails",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "policyid",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "policyAmount",
+            "type": "uint256"
+          },
+          {
+            "internalType": "address",
+            "name": "signerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "string",
+            "name": "userId",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "packageId",
+            "type": "string"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "plugin",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]

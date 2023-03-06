@@ -46,6 +46,12 @@ contract FDC is PluginClient {
         uint256 timestamp
     );
 
+    event OwnershipTransferred(
+        address indexed previousOwner, 
+        address indexed newOwner
+    );
+
+
     function delayCompensation(
         string memory _userId,
         string memory _packageId,
@@ -86,8 +92,22 @@ contract FDC is PluginClient {
    function withdrawPli() public onlyOwner {
         PliTokenInterface pli = PliTokenInterface(pluginTokenAddress());
         uint256 pliBalance =  pli.balanceOf(address(this));
-        require(pli.transfer(msg.sender,pliBalance), "Unable to transfer");
+        pli.transfer(msg.sender,pliBalance);
         emit withdrawnPli(msg.sender, pliBalance,block.timestamp);
   }
+
+  //To Transfer the ownership of contract 
+    function transferContractOwnership(address _newOwneraddress)
+        public onlyOwner()
+    {
+        _transferOwner(_newOwneraddress);
+    }
+
+    //To Transfer the ownership of contract (Internal function)
+    function _transferOwner(address _newOwneraddress) internal {
+        require(_newOwneraddress != address(0));
+        emit OwnershipTransferred(owner, _newOwneraddress);
+        owner = _newOwneraddress;
+    }
 
 }
