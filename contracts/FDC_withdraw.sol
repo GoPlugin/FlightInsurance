@@ -10,6 +10,7 @@ contract FDC is PluginClient {
 
     address public plugin;
     address public owner;
+    address public potentialAdmin;
 
     //Staker Details - Policy Buyers
     struct passenger {
@@ -46,11 +47,16 @@ contract FDC is PluginClient {
         uint256 timestamp
     );
 
-    event OwnershipTransferred(
-        address indexed previousOwner, 
-        address indexed newOwner
+    event OwnershipRenounced(
+        address indexed previousOwner
+    );
+    event AdminNominated(
+        address indexed nominated
     );
 
+    event AdminChanged(
+        address indexed newOwner
+    );
 
     function delayCompensation(
         string memory _userId,
@@ -96,18 +102,29 @@ contract FDC is PluginClient {
         emit withdrawnPli(msg.sender, pliBalance,block.timestamp);
   }
 
-  //To Transfer the ownership of contract 
-    function transferContractOwnership(address _newOwneraddress)
-        public onlyOwner()
-    {
-        _transferOwner(_newOwneraddress);
+  function renounceOwnership() public onlyOwner {
+        emit OwnershipRenounced(owner);
+        owner = address(0);
+        potentialAdmin = address(0);
     }
 
-    //To Transfer the ownership of contract (Internal function)
-    function _transferOwner(address _newOwneraddress) internal {
-        require(_newOwneraddress != address(0));
-        emit OwnershipTransferred(owner, _newOwneraddress);
-        owner = _newOwneraddress;
+    function transferAdmin(address _pendingAdmin) external onlyOwner {
+        require(
+            _pendingAdmin != address(0),
+            "potential admin can not be the zero address."
+        );
+        potentialAdmin = _pendingAdmin;
+        emit AdminNominated(_pendingAdmin);
     }
 
+    function acceptAdmin() external {
+        require(
+            msg.sender == potentialAdmin,
+            "You must be nominated as potential admin before you can accept administer role"
+        );
+        owner = potentialAdmin;
+        potentialAdmin = address(0);
+        emit AdminChanged(owner);
+    }
 }
+
